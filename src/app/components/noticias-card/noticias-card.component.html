@@ -1,0 +1,9 @@
+<div class="card" *ngIf="noticia">
+    <img [src]="noticia.imagem" [alt]="noticia.titulo" class="card-image">
+    <div class="card-content">
+      <h2>{{ noticia.titulo }}</h2>
+      <p>{{ noticia.resumo }}</p>
+      <p><strong>Categoria:</strong> {{ noticia.categoria }}</p>
+      <p><strong>Data:</strong> {{ noticia.data | date: 'dd/MM/yyyy' }}</p>
+    </div>
+  </div>
