@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "titulo": "Nova tecnologia revoluciona o setor de energia",
+    "resumo": "Cientistas descobrem nova forma de armazenar energia utilizando materiais recicláveis de baixo custo. A inovação promete reduzir os custos de baterias em até 50%.",
+    "data": "2025-04-10",
+    "categoria": "tecnologia",
+    "imagem": "https://storage-files-api.soulplus.digital/logo-6-soulplus.png"
+  },
+  {
+    "id": 2,
+    "titulo": "Campeonato nacional termina com surpresa",
+    "resumo": "Equipe do interior leva o título pela primeira vez após uma vitória emocionante na final. O time superou adversários tradicionais e conquistou a torcida.",
+    "data": "2025-04-12",
+    "categoria": "esportes",
+    "imagem": "https://soulplus.digital/assets/images/slide6.webp"
+  },
+  {
+    "id": 3,
+    "titulo": "Economia mundial passa por mudanças significativas",
+    "resumo": "Especialistas analisam os novos rumos da economia global após reunião de líderes mundiais. Mercados emergentes mostram sinais de recuperação.",
+    "data": "2025-04-09",
+    "categoria": "mundo",
+    "imagem": "https://soulplus.digital/assets/images/chat-session2.png"
+  },
+  {
+    "id": 4,
+    "titulo": "Novo aplicativo de fitness faz sucesso entre jovens",
+    "resumo": "Aplicativo que gamifica exercícios físicos atrai milhões de usuários em seu primeiro mês. Especialistas aprovam a iniciativa que incentiva hábitos saudáveis.",
+    "data": "2025-04-15",
+    "categoria": "tecnologia",
+    "imagem": "https://storage-files-api.soulplus.digital/logo-6-soulplus.png"
+  },
+  {
+    "id": 5,
+    "titulo": "Time nacional se classifica para competição internacional",
+    "resumo": "Seleção garante vaga após vitória convincente no último jogo das eliminatórias. Torcedores comemoram nas ruas de todo o país.",
+    "data": "2025-04-14",
+    "categoria": "esportes",
+    "imagem": "https://soulplus.digital/assets/images/slide6.webp"
+  },
+  {
+    "id": 6,
+    "titulo": "Novas políticas ambientais são anunciadas em conferência",
+    "resumo": "Líderes de 30 países se comprometem com metas mais ambiciosas para redução de emissões de carbono até 2030. Ativistas consideram um avanço histórico.",
+    "data": "2025-04-11",
+    "categoria": "mundo",
+    "imagem": "https://soulplus.digital/assets/images/chat-session2.png"
+  }
+]

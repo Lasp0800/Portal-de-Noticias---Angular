@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Noticia } from '../models/noticias.model';
 
 @Injectable({
@@ -13,7 +13,9 @@ export class NoticiasService {
   constructor(private http: HttpClient) {}
 
   getAllNoticias(): Observable<Noticia[]> {
-    return this.http.get<Noticia[]>(this.apiUrl);
+    return this.http.get<Noticia[]>(this.apiUrl).pipe(
+      catchError(() => throwError(() => new Error('Erro ao carregar notícias')))
+    );
   }
 
   filterByText(texto: string): Observable<Noticia[]> {
@@ -23,7 +25,8 @@ export class NoticiasService {
           noticia.titulo.toLowerCase().includes(texto.toLowerCase()) ||
           noticia.resumo.toLowerCase().includes(texto.toLowerCase())
         )
-      )
+      ),
+      catchError(() => throwError(() => new Error('Erro ao filtrar notícias por texto')))
     );
   }
 
@@ -31,7 +34,8 @@ export class NoticiasService {
     return this.http.get<Noticia[]>(this.apiUrl).pipe(
       map(noticias =>
         noticias.filter(noticia => noticia.categoria.toLowerCase() === categoria.toLowerCase())
-      )
+      ),
+      catchError(() => throwError(() => new Error('Erro ao filtrar notícias por categoria')))
     );
   }
 }

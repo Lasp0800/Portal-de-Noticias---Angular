@@ -1,26 +1,95 @@
+// Variáveis para cores e espaçamentos
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$background-color: #ffffff;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$border-radius: 12px;
+$padding: 20px;
+
+// Estilo do card
 .card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px;
-    max-width: 300px;
+  background: $background-color;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 8px $shadow-color;
+  overflow: hidden; // Garante que a imagem respeite o border-radius
+  margin: 20px;
+  max-width: 320px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  // Efeito de hover
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px $shadow-color;
   }
-  
+}
+
+// Estilo da imagem
+.card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover; // Garante que a imagem preencha o espaço sem distorção
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+}
+
+// Estilo do conteúdo
+.card-content {
+  padding: $padding;
+}
+
+// Estilo do título
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 12px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; // Limita o título a 2 linhas
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Estilo do resumo
+p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 0 10px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; // Limita o resumo a 3 linhas
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Estilo da categoria e data
+p strong {
+  color: $primary-color;
+  font-weight: 500;
+}
+
+p:last-child {
+  font-size: 0.85rem;
+  color: $secondary-color;
+  margin-bottom: 0;
+}
+
+// Media query para responsividade
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+    margin: 10px;
+  }
+
   .card-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+    height: 150px;
   }
-  
-  .card-content {
-    padding: 8px;
-  }
-  
+
   h2 {
-    font-size: 1.5em;
-    margin: 0 0 8px;
+    font-size: 1.2rem;
   }
-  
+
   p {
-    margin: 4px 0;
+    font-size: 0.9rem;
   }
+}
