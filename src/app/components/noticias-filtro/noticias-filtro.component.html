@@ -1,1 +1,37 @@
-<p>noticias-filtro works!</p>
+<div class="filter-container">
+    <h2>Filtros</h2>
+    <div class="filter-section">
+      <input 
+        type="text" 
+        placeholder="Buscar por título ou resumo..." 
+        [(ngModel)]="textoFiltro" 
+        (ngModelChange)="onTextoFiltroChange()"
+      />
+    </div>
+    <div class="filter-section">
+      <label>
+        <input 
+          type="checkbox" 
+          value="tecnologia" 
+          [(ngModel)]="categoriasSelecionadas.tecnologia" 
+          (ngModelChange)="onCategoriaChange()"
+        /> Tecnologia
+      </label>
+      <label>
+        <input 
+          type="checkbox" 
+          value="esportes" 
+          [(ngModel)]="categoriasSelecionadas.esportes" 
+          (ngModelChange)="onCategoriaChange()"
+        /> Esportes
+      </label>
+      <label>
+        <input 
+          type="checkbox" 
+          value="mundo" 
+          [(ngModel)]="categoriasSelecionadas.mundo" 
+          (ngModelChange)="onCategoriaChange()"
+        /> Mundo
+      </label>
+    </div>
+  </div>

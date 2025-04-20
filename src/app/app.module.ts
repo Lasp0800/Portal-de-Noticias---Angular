@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NoticiasCardComponent } from './components/noticias-card/noticias-card.component';
@@ -16,7 +17,8 @@ import { NoticiasFiltroComponent } from './components/noticias-filtro/noticias-f
   ],
   imports: [
     BrowserModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())

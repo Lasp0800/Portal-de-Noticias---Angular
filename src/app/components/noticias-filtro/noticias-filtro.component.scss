@@ -1,0 +1,35 @@
+.filter-container {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .filter-section {
+    margin-bottom: 15px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  label {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 5px;
+  }

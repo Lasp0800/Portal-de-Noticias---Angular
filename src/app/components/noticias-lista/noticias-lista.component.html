@@ -1,1 +1,6 @@
-<p>noticias-lista works!</p>
+<div class="lista-container">
+    <app-noticias-card 
+      *ngFor="let noticia of noticiasFiltradas" 
+      [noticia]="noticia">
+    </app-noticias-card>
+  </div>

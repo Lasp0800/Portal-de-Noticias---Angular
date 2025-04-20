@@ -7,7 +7,8 @@ $border-radius: 12px;
 $padding: 20px;
 
 // Estilo do card
-.card {
+.cards-line-01, .cards-line-02 {
+  display: inline-grid;
   background: $background-color;
   border-radius: $border-radius;
   box-shadow: 0 4px 8px $shadow-color;
