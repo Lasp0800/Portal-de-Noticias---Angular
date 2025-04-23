@@ -8,25 +8,3 @@
     </div>
   </section>
 </div>
-
-<div class="cards-line-01" *ngIf="noticia">
-  <section><img [src]="noticia.imagem" [alt]="noticia.titulo" class="card-image">
-    <div class="card-content">
-      <h2>{{ noticia.titulo }}</h2>
-      <p>{{ noticia.resumo }}</p>
-      <p><strong>Categoria:</strong> {{ noticia.categoria }}</p>
-      <p><strong>Data:</strong> {{ noticia.data | date: 'dd/MM/yyyy' }}</p>
-    </div>
-  </section>
-</div>
-
-<div class="cards-line-02" *ngIf="noticia">
-  <section><img [src]="noticia.imagem" [alt]="noticia.titulo" class="card-image">
-    <div class="card-content">
-      <h2>{{ noticia.titulo }}</h2>
-      <p>{{ noticia.resumo }}</p>
-      <p><strong>Categoria:</strong> {{ noticia.categoria }}</p>
-      <p><strong>Data:</strong> {{ noticia.data | date: 'dd/MM/yyyy' }}</p>
-    </div>
-  </section>
-</div>

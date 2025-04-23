@@ -1,23 +1,65 @@
-// Variáveis para cores e espaçamentos
+// Variáveis organizadas por categoria
+// Cores
 $primary-color: #007bff;
 $secondary-color: #6c757d;
 $background-color: #ffffff;
 $shadow-color: rgba(0, 0, 0, 0.1);
+$text-color-dark: #333;
+$text-color-medium: #555;
+$text-color-light: #999;
+
+// Tamanhos de fonte
+$font-size-lg: 1.4rem;
+$font-size-md: 0.95rem;
+$font-size-sm: 0.85rem;
+
+// Espaçamentos
 $border-radius: 12px;
 $padding: 20px;
+$margin-bottom-lg: 12px;
+$margin-bottom-md: 10px;
+$margin-bottom-none: 0;
+$line-height-md: 1.5;
+$line-height-sm: 1.3;
+
+// Imagens
+$image-height: 180px;
+$image-height-mobile: 150px;
+
+// Truncamento de texto
+$line-clamp-2: 2;
+$line-clamp-3: 3;
+
+// Classe utilitária para truncamento
+.truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: $line-clamp-2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: $line-clamp-3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 // Estilo do card
-.cards-line-01, .cards-line-02 {
+.cards-line-01,
+.cards-line-02 {
   display: inline-grid;
   background: $background-color;
   border-radius: $border-radius;
   box-shadow: 0 4px 8px $shadow-color;
-  overflow: hidden; // Garante que a imagem respeite o border-radius
-  margin: 20px;
-  max-width: 320px;
+  overflow: hidden;
+  margin: 15px;
+  max-width: 420px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  animation: slideUp 1.5s ease; // Removido transform duplicado
 
-  // Efeito de hover
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px $shadow-color;
@@ -27,8 +69,8 @@ $padding: 20px;
 // Estilo da imagem
 .card-image {
   width: 100%;
-  height: 180px;
-  object-fit: cover; // Garante que a imagem preencha o espaço sem distorção
+  height: $image-height;
+  object-fit: cover;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
 }
@@ -36,31 +78,26 @@ $padding: 20px;
 // Estilo do conteúdo
 .card-content {
   padding: $padding;
+  margin: 20px 5px;
 }
 
 // Estilo do título
 h2 {
-  font-size: 1.4rem;
+  font-size: $font-size-lg;
   font-weight: 600;
-  color: #333;
-  margin: 0 0 12px;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; // Limita o título a 2 linhas
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  color: $text-color-dark;
+  margin: 0 0 $margin-bottom-lg;
+  line-height: $line-height-sm;
+  @extend .truncate-2; // Usa a classe utilitária
 }
 
 // Estilo do resumo
 p {
-  font-size: 0.95rem;
-  color: #555;
-  margin: 0 0 10px;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; // Limita o resumo a 3 linhas
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: $font-size-md;
+  color: $text-color-medium;
+  margin: 0 0 $margin-bottom-md;
+  line-height: $line-height-md;
+  @extend .truncate-3; // Usa a classe utilitária
 }
 
 // Estilo da categoria e data
@@ -70,20 +107,28 @@ p strong {
 }
 
 p:last-child {
-  font-size: 0.85rem;
+  font-size: $font-size-sm;
   color: $secondary-color;
-  margin-bottom: 0;
+  margin-bottom: $margin-bottom-none;
 }
 
 // Media query para responsividade
+@media (max-width: 1024px) {
+  .cards-line-01,
+  .cards-line-02 {
+    max-width: 350px; // Ajuste para tablets
+  }
+}
+
 @media (max-width: 768px) {
-  .card {
+  .cards-line-01,
+  .cards-line-02 {
     max-width: 100%;
     margin: 10px;
   }
 
   .card-image {
-    height: 150px;
+    height: $image-height-mobile;
   }
 
   h2 {
@@ -92,5 +137,17 @@ p:last-child {
 
   p {
     font-size: 0.9rem;
+  }
+}
+
+// Animação de entrada
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
