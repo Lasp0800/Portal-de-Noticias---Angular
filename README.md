@@ -1,6 +1,12 @@
 # Portal de Notícias
 Bem-vindo ao Portal de Notícias, um projeto Angular que exibe notícias com filtros dinâmicos e animações de entrada. O projeto foi desenvolvido com NgModules e utiliza SCSS para estilização, Intersection Observer para animações, e RxJS para gerenciar eventos de filtro de forma reativa.
 
+
+
+https://github.com/user-attachments/assets/89bff2bd-b703-46f8-9f39-f61dd2812ef5
+
+
+
 ## Carrossel de Notícias: Exibe 2 cards por linha, com navegação via botões e dots.
 * Filtros Dinâmicos: Campo de busca por texto e checkboxes para filtrar por categoria (Tecnologia, Esportes, Mundo).
 * Animações de Entrada: Cards entram dinamicamente ao carregar a página e ao serem filtrados.
