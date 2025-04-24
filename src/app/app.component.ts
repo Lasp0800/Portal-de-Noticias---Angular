@@ -6,11 +6,12 @@ import { Noticia } from './models/noticias.model';
   selector: 'app-root',
   standalone: false,
   template: `
-    <h1>Portal de Notícias Angular</h1>
+    <h1 id="titulo">Portal de Notícias Angular</h1>
     <app-noticias-filtro 
       (textoFiltroChange)="onTextoFiltroChange($event)"
       (categoriasFiltroChange)="onCategoriasFiltroChange($event)">
     </app-noticias-filtro>
+    <h1 class="noticias">Notícias</h1>
     <app-noticias-lista 
       [noticias]="noticias"
       [textoFiltro]="textoFiltro"

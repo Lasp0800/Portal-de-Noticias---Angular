@@ -1,5 +1,5 @@
-h1{
-    background-color: #951dc4;
+#titulo{
+    background-color: #0316a8;
     color: #ffffff;
     font-size: 2.5rem;
     text-align: center;
@@ -7,5 +7,17 @@ h1{
     font-family: 'Arial', sans-serif;
     font-weight: bold;
     padding: 20px;
+    border-radius: 10px;
+}
+
+.noticias{
+    background-color: #df6800;
+    color: #ffffff;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 50px 370px; 
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    padding: 10px;
     border-radius: 10px;
 }

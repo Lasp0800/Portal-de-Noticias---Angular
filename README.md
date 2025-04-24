@@ -1,17 +1,16 @@
 # Portal de Notícias
-Bem-vindo ao Portal de Notícias, um projeto Angular que exibe notícias em um carrossel interativo, com filtros dinâmicos e animações de entrada. O projeto foi desenvolvido com NgModules e utiliza SCSS para estilização, Intersection Observer para animações, e RxJS para gerenciar eventos de filtro de forma reativa.
-Funcionalidades
+Bem-vindo ao Portal de Notícias, um projeto Angular que exibe notícias com filtros dinâmicos e animações de entrada. O projeto foi desenvolvido com NgModules e utiliza SCSS para estilização, Intersection Observer para animações, e RxJS para gerenciar eventos de filtro de forma reativa.
 
-## Carrossel de Notícias: Exibe 3 cards por linha, com navegação via botões e dots.
-Filtros Dinâmicos: Campo de busca por texto e checkboxes para filtrar por categoria (Tecnologia, Esportes, Mundo).
-Animações de Entrada: Cards entram dinamicamente da esquerda ou direita ao rolar a página.
-Ordenação por Data: Notícias exibidas com as mais recentes primeiro.
-Acessibilidade: ARIA labels, navegação por teclado, e foco visível em elementos interativos.
-Responsividade: Layout ajustado para diferentes tamanhos de tela.
+## Carrossel de Notícias: Exibe 2 cards por linha, com navegação via botões e dots.
+* Filtros Dinâmicos: Campo de busca por texto e checkboxes para filtrar por categoria (Tecnologia, Esportes, Mundo).
+* Animações de Entrada: Cards entram dinamicamente ao carregar a página e ao serem filtrados.
+* Ordenação por Data: Notícias exibidas com as mais recentes primeiro.
+* Acessibilidade: ARIA labels, navegação por teclado, e foco visível em elementos interativos.
+* Responsividade: Layout ajustado para diferentes tamanhos de tela.
 
 Pré-requisitos
 ```bash
-Node.js (versão 14.x ou superior)
+Node.js (versão 14.x ou superior2
 Angular CLI (versão 12.x ou superior)
 Git (para clonar o repositório)
 ```
@@ -47,7 +46,7 @@ ng build --prod
 ## Uso de Observables e Operadores RxJS
 No projeto, utilizamos Observables e RxJS para gerenciar os eventos de filtro de forma reativa, garantindo que a UI seja atualizada automaticamente quando o usuário interage com o campo de busca ou os checkboxes. Aqui está uma explicação simples:
 
-### Observables com EventEmitter: No NoticiasFiltroComponent, usamos @Output() com EventEmitter para emitir eventos quando o texto de busca ou as categorias selecionadas mudam:
+* Observables com EventEmitter: No NoticiasFiltroComponent, usamos @Output() com EventEmitter para emitir eventos quando o texto de busca ou as categorias selecionadas mudam:
 ```bash
 @Output() textoFiltroChange = new EventEmitter<string>();
 @Output() categoriasFiltroChange = new EventEmitter<string[]>();
@@ -56,9 +55,11 @@ No projeto, utilizamos Observables e RxJS para gerenciar os eventos de filtro de
 
 Esses eventos são emitidos no (ngModelChange) e capturados pelo componente pai (NoticiasListaComponent).
 
-Reatividade no Componente Pai: O NoticiasListaComponent reage a esses eventos através do ngOnChanges(), que chama filtrarNoticias() para atualizar a lista de notícias exibidas. Isso elimina a necessidade de manipular o DOM manualmente e mantém o estado reativo.
+* Reatividade no Componente Pai: O NoticiasListaComponent reage a esses eventos através do ngOnChanges(), que chama filtrarNoticias() para atualizar a lista de notícias exibidas. Isso elimina a necessidade de manipular o DOM manualmente e mantém o estado reativo.
 
-### Operadores RxJS (Potencial de Melhoria): Embora o projeto não use operadores RxJS diretamente (como debounceTime ou distinctUntilChanged), poderíamos adicioná-los para otimizar o filtro de texto. Por exemplo:
+### Operadores RxJS:
+
+O projeto usa operadores RxJS diretamente (como debounceTime ou distinctUntilChanged) para otimizar o filtro de texto. Por exemplo:
 
 ```bash
 this.textoFiltroChange.pipe(
@@ -71,10 +72,15 @@ this.textoFiltroChange.pipe(
 
 ```
 
-Isso reduziria chamadas desnecessárias ao digitar rapidamente.
+Isso reduz chamadas desnecessárias ao digitar rapidamente.
 
 
-## Dificuldades Encontradas e Soluções
+# Dificuldades Encontradas e Soluções
+
+### Utilização de NgModules no Angular v.19.7
+
+* Dificuldade: Como versões do Angular 17+ se tonaram o uso do _standalone_ padrão para os projetos criados, o NgModule não funcionava dentro dessas novas versões.
+* Solução: Para a prática do uso de NgModule para futuros projetos da empresa, pesquisei sobre como o _standalone_ funcionava e como seu tipo é _boolean_ apenas fiz trocar seu resultado de _true_ para _false_, assim forçando o seu desuso dentro de cada componente para a utilização de NgModule.
 
 ### Alinhamento dos Filtros na Mesma Linha
 
@@ -82,10 +88,10 @@ Isso reduziria chamadas desnecessárias ao digitar rapidamente.
 * Solução: Usei display: flex no .filter-row para alinhar os elementos na mesma linha, com gap para espaçamento. Ajustei a responsividade com media queries para empilhar os elementos em telas menores.
 
 
-### Animações Dinâmicas nos Cards
+### Exibição de JSON Mock 
 
-* Dificuldade: Fazer os cards entrarem da esquerda ou direita ao rolar a página, apenas quando visíveis, sem disparar animações repetidas.
-* Solução: Implementei o Intersection Observer API para detectar quando os cards entram na viewport, adicionando a classe visible apenas uma vez. Usei SCSS para definir animações (slideInFromLeft e slideInFromRight) e combinei com a animação existente slideUp.
+* Dificuldade: O Mock fornecido não estava sendo exibido no build do projeto, alegando falha de comunicação com a pasta src/assets.
+* Solução: Por padrão o Angular faz a conexão da pasta assets dentro da pasta src, como havia criado a pasta assets dentro de app/ não estava sendo localizado o conteúdo do JSON Mock. Fiz apenas mover a pasta para fora de app, ficando assim a comunicação correta padrão "src/assets".
 
 
 ### Manutenção de Estilos
