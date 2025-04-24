@@ -1,61 +1,105 @@
-# PortalNoticias
+# Portal de Notícias
+Bem-vindo ao Portal de Notícias, um projeto Angular que exibe notícias em um carrossel interativo, com filtros dinâmicos e animações de entrada. O projeto foi desenvolvido com NgModules e utiliza SCSS para estilização, Intersection Observer para animações, e RxJS para gerenciar eventos de filtro de forma reativa.
+Funcionalidades
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+## Carrossel de Notícias: Exibe 3 cards por linha, com navegação via botões e dots.
+Filtros Dinâmicos: Campo de busca por texto e checkboxes para filtrar por categoria (Tecnologia, Esportes, Mundo).
+Animações de Entrada: Cards entram dinamicamente da esquerda ou direita ao rolar a página.
+Ordenação por Data: Notícias exibidas com as mais recentes primeiro.
+Acessibilidade: ARIA labels, navegação por teclado, e foco visível em elementos interativos.
+Responsividade: Layout ajustado para diferentes tamanhos de tela.
 
-## Development server
+Pré-requisitos
+```bash
+Node.js (versão 14.x ou superior)
+Angular CLI (versão 12.x ou superior)
+Git (para clonar o repositório)
+```
+## Instruções para Instalar e Executar o Projeto
 
-To start a local development server, run:
+```bash
+Clone o Repositório
+git clone <URL_DO_REPOSITORIO>
+cd portal-de-noticias
+```
 
+## Instale as Dependências
+Certifique-se de ter o Node.js instalado. Depois, instale as dependências com:
+
+```bash
+npm install
+```
+## Execute o Projeto
+Inicie o servidor de desenvolvimento Angular:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abra o navegador em http://localhost:4200 para visualizar o portal.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Build de Produção (Opcional)
+Para gerar uma build otimizada para deploy:
 
 ```bash
-ng generate --help
+ng build --prod
 ```
 
-## Building
+## Uso de Observables e Operadores RxJS
+No projeto, utilizamos Observables e RxJS para gerenciar os eventos de filtro de forma reativa, garantindo que a UI seja atualizada automaticamente quando o usuário interage com o campo de busca ou os checkboxes. Aqui está uma explicação simples:
 
-To build the project run:
+### Observables com EventEmitter: No NoticiasFiltroComponent, usamos @Output() com EventEmitter para emitir eventos quando o texto de busca ou as categorias selecionadas mudam:
+```bash
+@Output() textoFiltroChange = new EventEmitter<string>();
+@Output() categoriasFiltroChange = new EventEmitter<string[]>();
+
+```
+
+Esses eventos são emitidos no (ngModelChange) e capturados pelo componente pai (NoticiasListaComponent).
+
+Reatividade no Componente Pai: O NoticiasListaComponent reage a esses eventos através do ngOnChanges(), que chama filtrarNoticias() para atualizar a lista de notícias exibidas. Isso elimina a necessidade de manipular o DOM manualmente e mantém o estado reativo.
+
+### Operadores RxJS (Potencial de Melhoria): Embora o projeto não use operadores RxJS diretamente (como debounceTime ou distinctUntilChanged), poderíamos adicioná-los para otimizar o filtro de texto. Por exemplo:
 
 ```bash
-ng build
+this.textoFiltroChange.pipe(
+  debounceTime(300),
+  distinctUntilChanged()
+).subscribe(texto => {
+  this.textoFiltro = texto;
+  this.filtrarNoticias();
+});
+
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Isso reduziria chamadas desnecessárias ao digitar rapidamente.
 
-## Running unit tests
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Dificuldades Encontradas e Soluções
 
-```bash
-ng test
-```
+### Alinhamento dos Filtros na Mesma Linha
 
-## Running end-to-end tests
+* Dificuldade: Inicialmente, o campo de busca e os checkboxes estavam em blocos separados, dificultando o layout desejado (|buscar...| *tecnologia *esportes *mundo).
+* Solução: Usei display: flex no .filter-row para alinhar os elementos na mesma linha, com gap para espaçamento. Ajustei a responsividade com media queries para empilhar os elementos em telas menores.
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+### Animações Dinâmicas nos Cards
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+* Dificuldade: Fazer os cards entrarem da esquerda ou direita ao rolar a página, apenas quando visíveis, sem disparar animações repetidas.
+* Solução: Implementei o Intersection Observer API para detectar quando os cards entram na viewport, adicionando a classe visible apenas uma vez. Usei SCSS para definir animações (slideInFromLeft e slideInFromRight) e combinei com a animação existente slideUp.
 
-## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Manutenção de Estilos
 
-# Portal-de-Noticias---Angular
+* Dificuldade: Estilos repetidos no SCSS (ex.: tamanhos de fonte, cores) dificultavam ajustes.
+* Solução: Centralizei os valores em variáveis SCSS (ex.: $font-size-md, $primary-color) e usei @extend para reutilizar classes utilitárias (ex.: .truncate-2 para truncamento de texto).
+
+
+### Acessibilidade
+
+* Dificuldade: Garantir que o carrossel e os filtros fossem acessíveis via teclado e leitores de tela.
+* Solução: Adicionei ARIA labels (ex.: aria-label nos botões do carrossel), tabindex nos dots, e outline para foco visível. Também associei labels aos inputs com for e id.
+
+Contato
+Se precisar de ajuda ou quiser contribuir, entre em contato pelo [sousaluiz854@gmail.com] ou abra uma issue no repositório.
+
+Desenvolvido com 💻 e ☕ por [Luiz_Augusto]

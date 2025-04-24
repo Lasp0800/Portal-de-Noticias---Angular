@@ -1,121 +1,140 @@
 // Variáveis para cores e espaçamentos
-$color:#ffffff;
+$color: #ffffff;
+$background-color: #951dc4;
+$text-color: #f9f9f9;
+$placeholder-color: #7e7e7e;
+$border-color: #ccc;
+$border-radius: 8px;
+$padding: 10px;
+$font-family: 'Arial', sans-serif;
 
 .filter-container {
-    background: #951dc4;
-    color: #f9f9f9;
-    padding: 10px;
-    border-radius: 8px;
-    margin: 50px 300px;
-    transform: slideUp 1.0s ease;
-    animation: slideUp 1.0s ease;
-  }
+  background: $background-color;
+  width: 40%;
+  color: $text-color;
+  padding: $padding;
+  border-radius: $border-radius;
+  margin: 50px 600px;
+  animation: slideUp 1.0s ease; // Removido transform duplicado
+}
 
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    $color:$color;
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-    margin-top: 10px;
-  }
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: $text-color; // Usa a cor definida
+  text-align: center;
+  font-family: $font-family;
+  margin-top: 10px;
+}
 
-  .filter-section {
-    margin-bottom: 15px;
-  }
+.filter-section {
+  margin-bottom: 15px;
+}
 
-  input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    margin: -10px 0 10px 0;
-    box-sizing: border-box;
-  }
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 20px; // Espaço entre o input e os checkboxes
+}
 
-  label {
-    display: inline-block;
-    margin-right: 15px;
-    font-size: 1rem;
-    $color:$color;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-  }
+.input-wrapper {
+  position: relative;
+  flex: 1; // Ocupa o espaço disponível
+  min-width: 300px; // Garante um tamanho mínimo
+}
 
-  input[type="checkbox"] {
-    margin-right: 10px;
-    transform: scale(1.5);
-    cursor: pointer;
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin: -10px 7 10px 0;
+  box-sizing: border-box;
+}
+
+.placeholder {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  color: $placeholder-color;
+  white-space: nowrap;
+  overflow: visible;
+  display: inline-block;
+  animation: typing 3s steps(30, end) 1, blink-caret 0.75s step-end 4;
+}
+
+.placeholder.hidden {
+  display: none;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 15px; // Espaço entre os checkboxes
+  flex-wrap: wrap; // Permite que os checkboxes quebrem linha se necessário
+}
+
+label {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  font-size: 1rem;
+  color: $color;
+  font-family: $font-family;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .filter-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 
   .input-wrapper {
-    position: relative;
-    width: 100%; // Garante que o wrapper tenha largura definida
+    min-width: 100%; // Ocupa toda a largura em telas menores
   }
-  
-  input[type="text"] {
+
+  .checkbox-group {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+    justify-content: flex-start;
   }
-  
-  .placeholder {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    font-size: 1.1rem;
-    color: #7e7e7e;
-    white-space: nowrap;
-    overflow: visible; // Remove o overflow: hidden para evitar corte
-    display: inline-block;
-    animation: typing 3s steps(30, end) 1, blink-caret 0.75s step-end 4;
-  }
-  
-  .placeholder.hidden {
-    display: none;
-  }
-  
-  label {
-    display: inline-block;
-    margin-right: 15px;
-    font-size: 1rem;
-    color: #ffffff;
-  }
-  
-  input[type="checkbox"] {
-    margin-right: 5px;
-  }
+}
 
-  ;
-  @keyframes slideUp {
-    0% {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
   }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 230px; // Ajustado para o tamanho do texto "Buscar por título ou resumo..."
-    }
+@keyframes typing {
+  from {
+    width: 0;
   }
-  
-  @keyframes blink-caret {
-    from, to {
-      border-right: 2px solid transparent;
-    }
-    50% {
-      border-right: 2px solid #aaa;
-    }
+  to {
+    width: 230px;
   }
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-right: 2px solid transparent;
+  }
+  50% {
+    border-right: 2px solid #aaa;
+  }
+}

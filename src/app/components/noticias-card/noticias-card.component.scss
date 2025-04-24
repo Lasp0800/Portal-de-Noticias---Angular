@@ -23,7 +23,7 @@ $line-height-md: 1.5;
 $line-height-sm: 1.3;
 
 // Imagens
-$image-height: 180px;
+$image-height: 280px;
 $image-height-mobile: 150px;
 
 // Truncamento de texto
@@ -54,11 +54,11 @@ $line-clamp-3: 3;
   box-shadow: 0 4px 8px $shadow-color;
   overflow: hidden;
   margin: 15px;
-  max-width: 420px;
+  max-width: 520px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   text-decoration: none;
-  animation: slideUp 1.5s ease; // Removido transform duplicado
+  animation: slideUp 1.5s ease;
 
   &:hover {
     transform: translateY(-5px);
@@ -88,7 +88,7 @@ h2 {
   color: $text-color-dark;
   margin: 0 0 $margin-bottom-lg;
   line-height: $line-height-sm;
-  @extend .truncate-2; // Usa a classe utilitária
+  @extend .truncate-2;
 }
 
 // Estilo do resumo
@@ -97,7 +97,7 @@ p {
   color: $text-color-medium;
   margin: 0 0 $margin-bottom-md;
   line-height: $line-height-md;
-  @extend .truncate-3; // Usa a classe utilitária
+  @extend .truncate-3;
 }
 
 // Estilo da categoria e data
@@ -116,7 +116,7 @@ p:last-child {
 @media (max-width: 1024px) {
   .cards-line-01,
   .cards-line-02 {
-    max-width: 350px; // Ajuste para tablets
+    max-width: 350px;
   }
 }
 

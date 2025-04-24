@@ -1,41 +1,45 @@
 <div class="filter-container">
   <h2>Filtros</h2>
-  <div class="filter-section input-wrapper">
-    <input 
-      type="text" 
-      [(ngModel)]="textoFiltro" 
-      (ngModelChange)="onTextoFiltroChange()"
-      (focus)="onFocus()"
-      (blur)="onBlur()"
-    />
-    <span class="placeholder" [class.hidden]="textoFiltro || isFocused">
-      {{ placeholderAnimado }}
-    </span>
-  </div>
   <div class="filter-section">
-    <label>
-      <input 
-        type="checkbox" 
-        value="tecnologia" 
-        [(ngModel)]="categoriasSelecionadas.tecnologia" 
-        (ngModelChange)="onCategoriaChange()"
-      /> Tecnologia
-    </label>
-    <label>
-      <input 
-        type="checkbox" 
-        value="esportes" 
-        [(ngModel)]="categoriasSelecionadas.esportes" 
-        (ngModelChange)="onCategoriaChange()"
-      /> Esportes
-    </label>
-    <label>
-      <input 
-        type="checkbox" 
-        value="mundo" 
-        [(ngModel)]="categoriasSelecionadas.mundo" 
-        (ngModelChange)="onCategoriaChange()"
-      /> Mundo
-    </label>
+    <div class="filter-row">
+      <div class="input-wrapper">
+        <input 
+          type="text" 
+          [(ngModel)]="textoFiltro" 
+          (ngModelChange)="onTextoFiltroChange()"
+          (focus)="onFocus()"
+          (blur)="onBlur()"
+        />
+        <span class="placeholder" [class.hidden]="textoFiltro || isFocused">
+          {{ placeholderAnimado }}
+        </span>
+      </div>
+      <div class="checkbox-group">
+        <label>
+          <input 
+            type="checkbox" 
+            value="tecnologia" 
+            [(ngModel)]="categoriasSelecionadas.tecnologia" 
+            (ngModelChange)="onCategoriaChange()"
+          /> Tecnologia
+        </label>
+        <label>
+          <input 
+            type="checkbox" 
+            value="esportes" 
+            [(ngModel)]="categoriasSelecionadas.esportes" 
+            (ngModelChange)="onCategoriaChange()"
+          /> Esportes
+        </label>
+        <label>
+          <input 
+            type="checkbox" 
+            value="mundo" 
+            [(ngModel)]="categoriasSelecionadas.mundo" 
+            (ngModelChange)="onCategoriaChange()"
+          /> Mundo
+        </label>
+      </div>
+    </div>
   </div>
 </div>
